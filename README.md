@@ -1,6 +1,6 @@
 # Colon cancer RNA-seq classification
 
-I compared decision tree and random forest models to classify carcinoma and normal colon tissue using gene expression data in R. I completed this analysis for my MSc coursework in Systems Biology (Bioinformatics).
+I compared decision tree and random forest models to classify carcinoma and normal colon tissue using gene expression data in R. I completed this analysis for my MSc coursework in Bioinformatics.
 
 ## Data
 
@@ -28,12 +28,14 @@ The validation leaves out one sample at a time. It does not leave out an entire 
 ## Files
 
 - `scripts/colon_cancer_classification.R`: analysis, model comparison, and plots.
-- `setup.R`: package checks and output folder creation.
+- `scripts/setup.R`: package checks and output folder creation.
 - `data/`: gene counts and sample information.
 - `figures/`: figures from the original coursework analysis.
-- `results/`: output from running the adapted script; Git ignores this folder.
+- `results/`: output folder that the script creates when you run the analysis.
 
 ## Run the analysis
+
+Keep both R scripts inside the `scripts/` folder. Run the analysis from the main repository folder, which contains `README.md`, `data/`, and `scripts/`.
 
 Install the packages once in R:
 
@@ -47,6 +49,8 @@ Open R or RStudio in the repository folder, then run:
 ```r
 source("scripts/colon_cancer_classification.R")
 ```
+
+The analysis script loads `scripts/setup.R` to check packages and create the output folder.
 
 Or run from a terminal in the repository folder:
 
@@ -63,3 +67,7 @@ The adapted script uses relative file paths, checks sample alignment, supplies p
 ## Author
 
 Jane Chidimma Ezeanowai
+
+Msc Systems Biology with specialisation in Bioinformatics
+
+University of Skövde
