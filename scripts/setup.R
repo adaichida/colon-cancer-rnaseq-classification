@@ -1,5 +1,5 @@
 # Check the packages needed by the analysis and create the output folder.
-# Run this project from the folder containing README.md and setup.R.
+# Run this project from the folder containing README.md and scripts.
 required_packages <- c("SummarizedExperiment", "edgeR", "DESeq2", "caret",
                        "C50", "randomForest", "ggplot2", "dplyr")
 missing_packages <- required_packages[
