@@ -1,8 +1,7 @@
 # Colon cancer RNA-seq classification
 # Run from the repository root: Rscript scripts/colon_cancer_classification.R
-# File paths and output handling adapted from the original coursework script.
 
-source("setup.R")
+source("scripts/setup.R")
 
 # Load required packages
 library(SummarizedExperiment)
@@ -65,8 +64,6 @@ stopifnot(identical(colnames(countTable_FF), rownames(sampleTable_FF)))
 
 
 
-
-
 # FILTERING LOW EXPRESSED GENES
 # Save plots from this run in a single PDF.
 pdf("results/analysis_plots.pdf", width = 9, height = 7)
@@ -93,11 +90,6 @@ dim(countTable_FF)
 
 
 
-
-
-
-
-
 # NORMALIZATION
 # Create a DESeq2 object
 dds <- DESeqDataSetFromMatrix(
@@ -107,19 +99,11 @@ dds <- DESeqDataSetFromMatrix(
   design = ~ Disease)
 
 
-
 # Apply VST normalization
 normCounts <- vst(dds, blind = FALSE)
 
 # Check normalized counts
 dim(assay(normCounts))
-
-
-
-
-
-
-
 
 
 
@@ -139,15 +123,12 @@ rfSBF$filter <- function(score, x, y){
 }
 
 
-
 # Decision tree fit function using C5.0
 dtSBF <- rfSBF
 dtSBF$fit <- function(x, y, ...){
   loadNamespace("C50")
   C50::C5.0(x = x, y = y)
 }
-
-
 
 
 
@@ -189,9 +170,6 @@ dt_pred <- dtModel$pred$predictions$pred
 # Confusion matrix
 dt_cm <- confusionMatrix(dt_pred, dtModel$pred$predictions$obs)
 dt_cm
-
-
-
 
 
 
@@ -274,11 +252,9 @@ accuracy_plot <- ggplot(model_comparison, aes(x = Model, y = Accuracy, fill = Mo
     y = "Accuracy"
   )
 
-
-
-
-
 print(accuracy_plot)
+
+
 
 # VARIABLE IMPORTANCE
 # Load visualization libraries
@@ -310,10 +286,6 @@ importance_plot <- ggplot(importance_df, aes(x = reorder(Feature, Importance), y
     axis.title = element_text(face = "bold"),
     panel.grid.minor = element_blank()
   )
-
-
-
-
 
 
 print(importance_plot)
